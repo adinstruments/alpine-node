@@ -2,9 +2,9 @@ FROM alpine
 MAINTAINER aramsay
 
 # we use non-root user in the container for security.
-# dr expects uid 22022 and gid 22022.
-RUN addgroup -S -g 22022 drgroup
-RUN adduser -S -u 22022 -G drgroup -g '' -h /home/druser druser
+# we use UID 22122 here to give some separation from other dServices that use the default (22022)
+RUN addgroup -S -g 22122 drgroup
+RUN adduser -S -u 22122 -G drgroup -g '' -h /home/druser druser
 
 RUN echo '@edge http://dl-cdn.alpinelinux.org/alpine/edge/main' >> /etc/apk/repositories
 
