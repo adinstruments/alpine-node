@@ -6,9 +6,7 @@ MAINTAINER aramsay
 RUN addgroup -S -g 22022 drgroup
 RUN adduser -S -u 22022 -G drgroup -g '' -h /home/druser druser
 
-RUN echo '@edge http://dl-cdn.alpinelinux.org/alpine/edge/main' >> /etc/apk/repositories
-
-RUN apk add --update bash curl wget gnupg nodejs-lts@edge python && rm -rf /var/cache/apk/*
+RUN apk add --update bash curl wget gnupg nodejs-lts python && rm -rf /var/cache/apk/*
 
 # create /dr and allow druser write access.
 RUN mkdir /drunner && chown druser:drgroup /drunner
