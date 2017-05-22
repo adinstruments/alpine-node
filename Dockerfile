@@ -6,7 +6,9 @@ MAINTAINER aramsay
 RUN addgroup -S -g 22122 drgroup
 RUN adduser -S -u 22122 -G drgroup -g '' -h /home/druser druser
 
-RUN apk add --update bash curl wget gnupg nodejs python && rm -rf /var/cache/apk/*
+ARG node_version
+
+RUN apk add --update bash curl wget gnupg nodejs=${node_version} python && rm -rf /var/cache/apk/*
 
 # create /dr and allow druser write access.
 RUN mkdir /drunner && chown druser:drgroup /drunner
