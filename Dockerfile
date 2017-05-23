@@ -1,5 +1,4 @@
-ARG alpine_version=latest
-FROM alpine:${alpine_version}
+FROM alpine:latest
 MAINTAINER aramsay
 
 # we use non-root user in the container for security.
