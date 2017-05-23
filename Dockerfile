@@ -1,4 +1,5 @@
-FROM alpine
+ARG alpine_version=latest
+FROM alpine:${alpine_version}
 MAINTAINER aramsay
 
 # we use non-root user in the container for security.
@@ -7,7 +8,7 @@ RUN addgroup -S -g 22122 drgroup
 RUN adduser -S -u 22122 -G drgroup -g '' -h /home/druser druser
 
 ARG node_version
-ARG node_package nodejs
+ARG node_package=nodejs
 
 RUN apk add --update bash curl wget gnupg ${node_package}=${node_version} python && rm -rf /var/cache/apk/*
 
